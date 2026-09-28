@@ -1,0 +1,6 @@
+[
+  {"id":"aiy-flow","type":"tab","label":"AIY Food API","disabled":false,"info":"Node-RED API for web homework"},
+  {"id":"api-http-in","type":"http in","z":"aiy-flow","name":"Promotion API","url":"/api/tacke","method":"get","upload":false,"swaggerDoc":"","x":160,"y":120,"wires":[["api-function"]]},
+  {"id":"api-function","type":"function","z":"aiy-flow","name":"Calculate discount","func":"const amount = Number(msg.req.query.amount || 0);\nlet rate = 0;\nif (amount >= 100000) rate = 0.10;\nelse if (amount >= 50000) rate = 0.05;\nconst discount = Math.round(amount * rate);\nmsg.payload = { ok: 1, msg: 'thành công', amount, discount, total: amount - discount, rate };\nreturn msg;","outputs":1,"timeout":0,"noerr":0,"initialize":"","finalize":"","libs":[],"x":390,"y":120,"wires":[["api-http-response"]]},
+  {"id":"api-http-response","type":"http response","z":"aiy-flow","name":"JSON response","statusCode":"","headers":{},"x":630,"y":120,"wires":[]}
+]

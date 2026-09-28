@@ -1,33 +1,21 @@
 <!DOCTYPE html>
 <html lang="lo">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AIY Food POS</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIY Food POS</title><link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="brand"><span class="brand-icon">🍜</span><div><h1>AIY Food POS</h1><p>ລະບົບຮັບອໍເດີຮ້ານອາຫານ</p></div></div>
-    <div class="top-info"><span>● ຮ້ານເປີດ</span><strong id="clock">--:--</strong></div>
-  </header>
-  <main class="layout">
-    <section class="menu-panel">
-      <div class="heading-row"><div><h2>ເມນູອາຫານ</h2><p>ເລືອກອາຫານເພື່ອເພີ່ມໃສ່ອໍເດີ</p></div><input id="search" type="search" placeholder="🔎 ຄົ້ນຫາອາຫານ..."></div>
-      <div class="categories" id="categories">
-        <button class="active" data-cat="all">ທັງໝົດ</button><button data-cat="main">🍛 ອາຫານ</button><button data-cat="noodle">🍜 ເສັ້ນ</button><button data-cat="drink">🥤 ເຄື່ອງດື່ມ</button>
-      </div>
-      <div class="food-grid" id="foodGrid"></div>
-    </section>
-    <aside class="order-panel">
-      <div class="order-head"><div><h2>ອໍເດີ</h2><p id="orderCount">0 ລາຍການ</p></div><button class="clear-btn" id="clearBtn">ລ້າງ</button></div>
-      <div class="customer"><label>ໂຕະ</label><select id="table"><option>ໂຕະ 01</option><option>ໂຕະ 02</option><option>ໂຕະ 03</option><option>ໂຕະ 04</option><option>ກັບບ້ານ</option></select></div>
-      <div class="cart" id="cart"><div class="empty">🛒<strong>ຍັງບໍ່ມີອໍເດີ</strong><span>ກົດເມນູດ້ານຊ້າຍເພື່ອເພີ່ມອາຫານ</span></div></div>
-      <div class="summary"><div><span>ລວມ</span><strong id="subtotal">0 ₭</strong></div><div><span>ສ່ວນຫຼຸດ</span><strong id="discount">0 ₭</strong></div><div class="total"><span>ລວມສຸດທ້າຍ</span><strong id="total">0 ₭</strong></div></div>
-      <button class="pay-btn" id="payBtn">💳 ຮັບເງິນ & ອອກໃບບິນ</button>
-    </aside>
-  </main>
-  <div class="toast" id="toast"></div>
-  <script src="app.js"></script>
-</body>
-</html>
+<header class="topbar"><div class="brand"><span class="brand-icon">🍜</span><div><h1>AIY Food POS</h1><p>ລະບົບຮັບອໍເດີຮ້ານອາຫານ</p></div></div><div class="top-info"><span>● ຮ້ານເປີດ</span><strong id="clock">--:--</strong></div></header>
+<main class="layout"><section class="menu-panel">
+  <div class="heading-row"><div><h2>ເມນູອາຫານ</h2><p>ເລືອກອາຫານເພື່ອເພີ່ມໃສ່ອໍເດີ</p></div><input id="search" type="search" placeholder="🔎 ຄົ້ນຫາອາຫານ..."></div>
+  <div class="categories" id="categories"><button class="active" data-cat="all">ທັງໝົດ</button><button data-cat="main">🍛 ອາຫານ</button><button data-cat="noodle">🍜 ເສັ້ນ</button><button data-cat="drink">🥤 ເຄື່ອງດື່ມ</button></div>
+  <div class="food-grid" id="foodGrid"></div>
+</section><aside class="order-panel">
+  <div class="order-head"><div><h2>ອໍເດີ</h2><p id="orderCount">0 ລາຍການ</p></div><button class="clear-btn" id="clearBtn">ລ້າງ</button></div>
+  <div class="customer"><label>ໂຕະ</label><select id="table"><option>ໂຕະ 01</option><option>ໂຕະ 02</option><option>ໂຕະ 03</option><option>ໂຕະ 04</option><option>ກັບບ້ານ</option></select></div>
+  <div class="cart" id="cart"><div class="empty">🛒<strong>ຍັງບໍ່ມີອໍເດີ</strong><span>ກົດເມນູດ້ານຊ້າຍເພື່ອເພີ່ມອາຫານ</span></div></div>
+  <div class="api-box"><span>⚡ Node-RED API</span><strong id="apiStatus">ພ້ອມໃຊ້ງານ</strong></div>
+  <div class="summary"><div><span>ລວມ</span><strong id="subtotal">0 ₭</strong></div><div><span>ສ່ວນຫຼຸດ API</span><strong id="discount">0 ₭</strong></div><div class="total"><span>ລວມສຸດທ້າຍ</span><strong id="total">0 ₭</strong></div></div>
+  <button class="pay-btn" id="payBtn">💳 ຮັບເງິນ & ອອກໃບບິນ</button>
+</aside></main><div class="toast" id="toast"></div><script src="app.js"></script>
+</body></html>
