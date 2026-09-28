@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIY - Website 1</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hero">
+  <div><span class="tag">BÀI TẬP LẬP TRÌNH WEB</span>
+    <h1>AIY Web & Node-RED API</h1>
+    <p>Nginx → Node-RED → API JSON → JavaScript Fetch</p>
+  </div>
+  <div class="status">● Hệ thống đang hoạt động</div>
+</header>
+<main class="container">
+  <section class="card intro"><h2>Website 1</h2>
+    <p>Trang web được phục vụ bởi Nginx. JavaScript gọi API Node-RED thông qua đường dẫn <code>/api/tacke</code>.</p>
+    <button id="btnApi">Gọi API</button>
+    <span id="status" class="muted">Chưa gọi API</span>
+  </section>
+  <section class="grid">
+    <div class="card"><h3>Kết quả API</h3><pre id="result">Nhấn “Gọi API” để kiểm tra.</pre></div>
+    <div class="card"><h3>Quy trình</h3><ol><li>Trình duyệt gửi GET /api/tacke.</li><li>Nginx reverse proxy tới Node-RED.</li><li>Node-RED xử lý thuật toán giảm giá.</li><li>API trả JSON và JavaScript hiển thị.</li></ol></div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

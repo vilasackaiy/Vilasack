@@ -1,0 +1,6 @@
+[
+  {"id":"tab-api","type":"tab","label":"API bài tập web","disabled":false},
+  {"id":"http-in","type":"http in","z":"tab-api","name":"GET /api/tacke","url":"/api/tacke","method":"get","upload":false,"swaggerDoc":"","x":150,"y":120,"wires":[["xu-ly"]]},
+  {"id":"xu-ly","type":"function","z":"tab-api","name":"Tính khuyến mãi","func":"const amount = Number(msg.req.query.amount || 0);\nlet rate = 0;\nif (amount >= 100000) rate = 0.10;\nelse if (amount >= 50000) rate = 0.05;\nconst discount = Math.round(amount * rate);\nmsg.payload = { ok: 1, msg: 'Thành công', amount, discount, total: amount - discount, rate };\nreturn msg;","outputs":1,"timeout":0,"noerr":0,"initialize":"","finalize":"","libs":[],"x":390,"y":120,"wires":[["http-out"]]},
+  {"id":"http-out","type":"http response","z":"tab-api","name":"Trả JSON","statusCode":"","headers":{"content-type":"application/json; charset=utf-8"},"x":620,"y":120,"wires":[]}
+]
