@@ -3,8 +3,7 @@
 ## Thông tin
 
 - Sinh viên: **Vilasack**
-- Deadline: **23h59 ngày 28/09/2026**
-- Repository: `vilasackaiy/Vilasack`
+
 
 ## 1. Môn An toàn và Bảo mật Thông tin
 
