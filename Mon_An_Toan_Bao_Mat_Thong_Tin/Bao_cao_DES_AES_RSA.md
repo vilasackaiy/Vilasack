@@ -73,7 +73,7 @@ Giải mã thực hiện các phép biến đổi ngược InvShiftRows, InvSubB
 
 ## 3. Cài đặt AES bằng Python
 
-Chương trình nằm tại `Code_AES/aes_demo.py`.
+Chương trình nằm tại `Code_AES/aes_demo.py`. Phần RSA nằm tại `Code_AES/rsa_demo.py`; benchmark nằm tại `Code_AES/benchmark_aes_rsa.py`.
 
 Chương trình sử dụng thư viện PyCryptodome và AES-128-CBC để minh họa:
 
@@ -136,11 +136,11 @@ Người gửi tạo hash của thông điệp và dùng Private Key để tạo
 
 Mô hình này cung cấp xác thực nguồn gốc và phát hiện thay đổi nội dung. Nó không nên được mô tả đơn giản là "mã hóa toàn bộ thông điệp bằng Private Key".
 
-### 5.2. Bảo mật dữ liệu dành cho người nhận
+### 5.2. Xác thực người nhận
 
-Người gửi sử dụng Public Key của người nhận để bảo vệ khóa hoặc dữ liệu nhỏ. Người nhận dùng Private Key của mình để khôi phục dữ liệu.
+RSA không tự động chứng minh danh tính người nhận chỉ bằng việc mã hóa bằng Public Key. Để xác thực người nhận, có thể dùng cơ chế challenge-response: bên gửi tạo một nonce ngẫu nhiên và yêu cầu bên nhận ký nonce bằng Private Key của bên nhận. Bên gửi dùng Public Key đã được xác thực của người nhận để kiểm tra chữ ký.
 
-Điều này đảm bảo chỉ bên sở hữu Private Key tương ứng mới có thể giải mã. Đây là cơ chế bảo mật hướng tới người nhận, không tự động chứng minh danh tính của người nhận.
+Trong mô hình bảo mật dữ liệu, người gửi có thể dùng Public Key của người nhận để bảo vệ khóa phiên hoặc dữ liệu nhỏ; người nhận dùng Private Key để khôi phục. Hai mục tiêu này cần được phân biệt: mã hóa hướng tới người nhận cung cấp tính bí mật, còn chữ ký challenge-response cung cấp bằng chứng sở hữu Private Key.
 
 ### 5.3. Kết hợp xác thực và bảo mật
 
@@ -164,7 +164,7 @@ Có thể kết hợp chữ ký số và mã hóa:
 | Trao đổi khóa | Cần cách chia sẻ khóa an toàn | Có Public Key để phân phối |
 | Chữ ký số | Không phải mục đích chính | Có thể dùng để tạo chữ ký số |
 
-Thời gian thực tế phụ thuộc CPU, thư viện, kích thước dữ liệu, chế độ mã hóa và cách triển khai. Vì vậy không nên dùng một hệ số cố định cho mọi máy tính. Chương trình AES trong repo đo thời gian AES; có thể dùng công cụ benchmark riêng nếu cần so sánh định lượng.
+Thời gian thực tế phụ thuộc CPU, thư viện, kích thước dữ liệu, chế độ mã hóa và cách triển khai. Repo có `Code_AES/benchmark_aes_rsa.py` để đo trung bình 100 lần với cùng thông điệp 32 byte: AES-128-CBC và RSA-2048-OAEP. Kết quả benchmark trên máy chạy bài được ghi khi chạy chương trình; không nên dùng một hệ số cố định cho mọi máy tính. RSA chỉ phù hợp với dữ liệu nhỏ/khóa phiên, không phải để mã hóa file lớn.
 
 ---
 
@@ -180,14 +180,18 @@ RSA phù hợp để bảo vệ khóa nhỏ, còn AES phù hợp để mã hóa 
 6. Dùng khóa AES để giải mã dữ liệu.
 7. Nếu cần xác thực nguồn gửi, người gửi ký dữ liệu hoặc hash bằng Private Key RSA và người nhận xác minh bằng Public Key.
 
-### 7.1. Ưu điểm
+### 7.1. Quy trình thực hiện trong chương trình
+
+`rsa_demo.py` minh họa RSA-2048 với OAEP cho mã hóa/giải mã và PSS cho chữ ký số. `benchmark_aes_rsa.py` đo thời gian AES và RSA trên dữ liệu nhỏ để minh họa chênh lệch hiệu năng.
+
+### 7.2. Ưu điểm
 
 - AES xử lý dữ liệu lớn nhanh.
 - RSA giải quyết bài toán phân phối khóa phiên.
 - Chữ ký RSA có thể bổ sung xác thực và toàn vẹn.
 - Đây là tư tưởng chung của nhiều hệ thống mật mã lai.
 
-### 7.2. Ví dụ ứng dụng
+### 7.3. Ví dụ ứng dụng
 
 - HTTPS/TLS.
 - Hệ thống trao đổi tệp an toàn.
