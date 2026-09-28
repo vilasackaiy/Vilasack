@@ -124,25 +124,7 @@ Sau đó chạy:
 docker compose --profile tunnel up -d
 ```
 
-**Không commit token thật lên GitHub.** File `.env` đã được đưa vào `.gitignore`.
 
-## Trình tự demo với giảng viên
 
-1. Mở WSL2 và vào thư mục project.
-2. Chạy `docker compose up -d`.
-3. Chạy `docker compose ps` để chứng minh các service.
-4. Mở Website 1 và bấm **Gọi API**.
-5. Mở Node-RED để chứng minh flow `http in → function → http response`.
-6. Mở Website 2 để chứng minh Nginx chạy hostname thứ hai.
-7. Mở phpMyAdmin để chứng minh MariaDB hoạt động.
-8. Nếu có domain thật, bật Cloudflared và kiểm tra URL public.
 
-## Git
 
-Sau khi thay đổi code:
-
-```bash
-git add .
-git commit -m "Hoan thien bai tap ve nha 2 mon"
-git push origin main
-```
